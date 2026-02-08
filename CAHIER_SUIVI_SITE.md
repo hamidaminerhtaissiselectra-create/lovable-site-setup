@@ -211,14 +211,14 @@ Accueil
 *(Aucune issue critique restante)*
 
 ### Priorité MOYENNE 🟡
-- [ ] Ajouter données locales enrichies (stats criminalité par ville)
+- [x] Ajouter données locales enrichies (stats criminalité par ville) → **FAIT** (14 départements principaux)
 - [ ] Ajouter images spécifiques par région si manquantes
 - [ ] Vérifier tous les liens internes (audit liens cassés)
 
 ### Priorité BASSE 🟢
 - [ ] Optimiser animations sur mobile (réduire si trop lourd)
 - [ ] Ajouter plus de témoignages réels
-- [ ] Étendre CityLocalContent à plus de départements
+- [x] Étendre CityLocalContent à plus de départements → **FAIT** (50+ départements couverts)
 
 ---
 

@@ -103,57 +103,129 @@ const CityServicesGrid = ({ city }: CityServicesGridProps) => {
     }
   ];
 
+  // Animation variants pour effet stagger
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30, scale: 0.95 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 100,
+        damping: 12
+      }
+    }
+  };
+
   return (
-    <section className="py-16 bg-background relative">
-      <div className="container mx-auto px-4">
+    <section className="py-20 bg-background relative overflow-hidden">
+      {/* Éléments décoratifs de fond */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <AnimatedSection animation="fade-up">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Nos Services à {city.name}
+          <div className="text-center mb-14">
+            <motion.span 
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="inline-block px-4 py-1.5 bg-primary/10 rounded-full text-primary text-sm font-medium mb-4"
+            >
+              8 solutions de sécurité
+            </motion.span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+              Nos Services à{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                {city.name}
+              </span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
               Solutions complètes de sécurité et domotique pour particuliers et professionnels.
             </p>
           </div>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {services.map((service, index) => (
+        <motion.div 
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          {services.map((service) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
+              variants={itemVariants}
+              whileHover={{ y: -8, transition: { duration: 0.2 } }}
             >
               <Link to={service.link}>
-                <Card className="group h-full border-border/50 hover:border-primary/50 transition-all duration-300 overflow-hidden">
-                  <CardContent className="p-5 relative">
-                    {/* Gradient de fond */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                <Card className="group h-full border-border/50 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 overflow-hidden">
+                  <CardContent className="p-6 relative">
+                    {/* Gradient de fond animé */}
+                    <motion.div 
+                      className={`absolute inset-0 bg-gradient-to-br ${service.gradient}`}
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    
+                    {/* Effet de brillance au hover */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                    </div>
                     
                     <div className="relative z-10">
-                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                        <service.icon className={`w-6 h-6 ${service.iconColor}`} />
-                      </div>
+                      {/* Icône avec animation */}
+                      <motion.div 
+                        className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-5 shadow-lg`}
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <service.icon className={`w-7 h-7 ${service.iconColor}`} />
+                      </motion.div>
                       
-                      <h3 className="font-bold text-foreground text-lg mb-2 group-hover:text-primary transition-colors flex items-center gap-2">
+                      <h3 className="font-bold text-foreground text-xl mb-2 group-hover:text-primary transition-colors flex items-center gap-2">
                         {service.title}
-                        <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                        <motion.span
+                          initial={{ opacity: 0, x: -10 }}
+                          whileHover={{ opacity: 1, x: 0 }}
+                        >
+                          <ArrowRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </motion.span>
                       </h3>
                       
-                      <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                      <p className="text-muted-foreground text-sm mb-5 line-clamp-2">
                         {service.description}
                       </p>
                       
-                      <div className="flex flex-wrap gap-1.5">
-                        {service.features.map((feature) => (
-                          <span 
-                            key={feature} 
-                            className="text-xs px-2 py-0.5 bg-secondary/80 rounded-full text-muted-foreground"
+                      {/* Tags avec animation */}
+                      <div className="flex flex-wrap gap-2">
+                        {service.features.map((feature, idx) => (
+                          <motion.span 
+                            key={feature}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: idx * 0.1 }}
+                            viewport={{ once: true }}
+                            className="text-xs px-2.5 py-1 bg-secondary/80 rounded-full text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors"
                           >
                             {feature}
-                          </span>
+                          </motion.span>
                         ))}
                       </div>
                     </div>
@@ -162,7 +234,7 @@ const CityServicesGrid = ({ city }: CityServicesGridProps) => {
               </Link>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
