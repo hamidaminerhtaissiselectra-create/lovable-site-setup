@@ -141,15 +141,22 @@ Vérifié : Videosurveillance.tsx (426 lignes)
 | Cards | ✅ OK | hover-lift, border-border |
 | Animations | ✅ OK | framer-motion + AnimatedSection |
 
-### Pages à harmoniser visuellement
+### Pages harmonisées visuellement (Mise à jour 08/02/2026)
 - [x] Accueil - Référence style
 - [x] ServicesHub - Même style que accueil ✅
 - [x] Services individuels - Même style ✅
 - [x] ZonesIntervention - Même style ✅
-- [x] RegionPage - Même style ✅
-- [x] CityServicePage - Même style ✅
+- [x] RegionPage - **HARMONISÉ** : Hero parallax + animations Framer Motion + badges stats ✅
+- [x] DepartmentPage - **HARMONISÉ** : Hero parallax + animations + stats animés ✅
+- [x] CityServicePage - Référence avec Hero parallax complet ✅
 
-**Constat : Le style est déjà cohérent sur toutes les pages.**
+### Composants créés pour harmonisation
+| Composant | Chemin | Description |
+|-----------|--------|-------------|
+| RegionHeroParallax | src/components/region/ | Hero animé avec parallax pour pages régions |
+| DepartmentHeroParallax | src/components/department/ | Hero animé avec parallax pour pages départements |
+
+**Constat : Le style est maintenant cohérent sur TOUTES les pages locales.**
 
 ---
 

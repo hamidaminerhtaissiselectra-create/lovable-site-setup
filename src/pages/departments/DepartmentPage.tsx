@@ -2,7 +2,6 @@ import { useParams, Navigate, Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
-import Breadcrumbs from "@/components/SEO/Breadcrumbs";
 import AnimatedSection from "@/components/AnimatedSection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -10,8 +9,10 @@ import FAQAccordion from "@/components/FAQAccordion";
 import MiniTestimonials from "@/components/MiniTestimonials";
 import WhyHDConnect from "@/components/WhyHDConnect";
 import QuoteFunnelSimple from "@/components/QuoteFunnelSimple";
+import DepartmentHeroParallax from "@/components/department/DepartmentHeroParallax";
 import { getDepartmentBySlug, allDepartments, getDepartmentsByRegion } from "@/data/departmentsData";
 import { getCitiesByDepartment } from "@/data/citiesData";
+import { motion } from "framer-motion";
 import {
   MapPin,
   ArrowRight,
@@ -178,82 +179,33 @@ const DepartmentPage = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-br from-primary/10 via-background to-accent/5 relative overflow-hidden">
-        <div className="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 left-10 w-56 h-56 bg-accent/10 rounded-full blur-3xl"></div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <Breadcrumbs items={breadcrumbItems} />
-          
-          <div className="max-w-4xl mx-auto text-center mt-8">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-medium">
-                <MapPin className="w-4 h-4" />
-                <span>Département {department.code}</span>
-              </div>
-              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full font-medium border ${priorityBadge.color}`}>
-                <CheckCircle className="w-4 h-4" />
-                <span>{priorityBadge.label}</span>
-              </div>
-            </div>
-            
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-              Expert Sécurité en <span className="text-primary">{department.name}</span> ({department.code})
-            </h1>
-            
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              {department.description}
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-primary to-accent hover:opacity-90 text-lg px-8"
-                onClick={() => scrollToSection("quote", { mode: "quote" })}
-              >
-                Demander un devis gratuit
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button 
-                size="lg" 
-                className="text-lg px-8 bg-primary/20 backdrop-blur-sm border-2 border-primary/50 hover:bg-primary/30 text-primary transition-all"
-                asChild
-              >
-                <a href={callUrl} target="_blank" rel="noopener noreferrer">
-                  <Phone className="mr-2 w-5 h-5" />
-                  {phoneNumber}
-                </a>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Section avec Parallax */}
+      <DepartmentHeroParallax department={department} breadcrumbItems={breadcrumbItems} />
 
-      {/* Infos Département */}
+      {/* Infos Département - avec animations */}
       <section className="py-12 bg-secondary/30">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            <div className="text-center p-4 bg-card rounded-xl border">
-              <Building2 className="w-8 h-8 text-primary mx-auto mb-2" />
-              <div className="text-2xl font-bold text-foreground">{department.mainCities.length}+</div>
-              <div className="text-sm text-muted-foreground">Villes principales</div>
-            </div>
-            <div className="text-center p-4 bg-card rounded-xl border">
-              <Users className="w-8 h-8 text-primary mx-auto mb-2" />
-              <div className="text-2xl font-bold text-foreground">{department.population}</div>
-              <div className="text-sm text-muted-foreground">Habitants</div>
-            </div>
-            <div className="text-center p-4 bg-card rounded-xl border">
-              <Clock className="w-8 h-8 text-primary mx-auto mb-2" />
-              <div className="text-2xl font-bold text-foreground">24h</div>
-              <div className="text-sm text-muted-foreground">Délai max</div>
-            </div>
-            <div className="text-center p-4 bg-card rounded-xl border">
-              <Shield className="w-8 h-8 text-primary mx-auto mb-2" />
-              <div className="text-2xl font-bold text-foreground">5 ans</div>
-              <div className="text-sm text-muted-foreground">Garantie</div>
-            </div>
+            {[
+              { icon: Building2, value: `${department.mainCities.length}+`, label: "Villes principales" },
+              { icon: Users, value: department.population, label: "Habitants" },
+              { icon: Clock, value: "24h", label: "Délai max" },
+              { icon: Shield, value: "5 ans", label: "Garantie" },
+            ].map((stat, index) => (
+              <motion.div 
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="text-center p-4 bg-card rounded-xl border hover:border-primary/50 hover:shadow-lg transition-all duration-300"
+              >
+                <stat.icon className="w-8 h-8 text-primary mx-auto mb-2" />
+                <div className="text-2xl font-bold text-foreground">{stat.value}</div>
+                <div className="text-sm text-muted-foreground">{stat.label}</div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

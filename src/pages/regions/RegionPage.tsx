@@ -2,7 +2,6 @@ import { useParams, Navigate, Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
-import Breadcrumbs from "@/components/SEO/Breadcrumbs";
 import AnimatedSection from "@/components/AnimatedSection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -10,8 +9,10 @@ import FAQAccordion from "@/components/FAQAccordion";
 import LocalServiceLinks from "@/components/LocalServiceLinks";
 import MiniTestimonials from "@/components/MiniTestimonials";
 import WhyHDConnect from "@/components/WhyHDConnect";
+import RegionHeroParallax from "@/components/region/RegionHeroParallax";
 import { getRegionBySlug, regionsData } from "@/data/regionsData";
 import { getCitiesByRegion } from "@/data/citiesData";
+import { motion } from "framer-motion";
 import {
   MapPin,
   ArrowRight,
@@ -175,53 +176,10 @@ const RegionPage = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-br from-primary/10 via-background to-accent/5 relative overflow-hidden">
-        <div className="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 left-10 w-56 h-56 bg-accent/10 rounded-full blur-3xl"></div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <Breadcrumbs items={breadcrumbItems} />
-          
-          <div className="max-w-4xl mx-auto text-center mt-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-medium mb-6">
-              <MapPin className="w-4 h-4" />
-              <span>{region.departments.length} départements couverts</span>
-            </div>
-            
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-              Expert Sécurité 2025-2026 en <span className="text-primary">{region.name}</span>
-            </h1>
-            
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              {region.description}
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-primary to-accent hover:opacity-90 text-lg px-8"
-                onClick={() => scrollToSection("quote", { mode: "quote" })}
-              >
-                Demander un devis gratuit
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button 
-                size="lg" 
-                className="text-lg px-8 bg-primary/20 backdrop-blur-sm border-2 border-primary/50 hover:bg-primary/30 text-primary transition-all"
-                asChild
-              >
-                <a href={callUrl} target="_blank" rel="noopener noreferrer">
-                  <Phone className="mr-2 w-5 h-5" />
-                  {phoneNumber}
-                </a>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Section avec Parallax */}
+      <RegionHeroParallax region={region} breadcrumbItems={breadcrumbItems} />
 
-      {/* Départements */}
+      {/* Départements - avec animations */}
       <section className="py-12 bg-secondary/30">
         <div className="container mx-auto px-4">
           <AnimatedSection animation="fade-up">
@@ -230,13 +188,18 @@ const RegionPage = () => {
             </div>
           </AnimatedSection>
           <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
-            {region.departments.map((dept) => (
-              <span 
+            {region.departments.map((dept, index) => (
+              <motion.span 
                 key={dept.code}
-                className="px-4 py-2 bg-card border border-border rounded-full text-sm font-medium"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                whileHover={{ scale: 1.05 }}
+                className="px-4 py-2 bg-card border border-border rounded-full text-sm font-medium hover:border-primary/50 hover:bg-primary/5 transition-colors cursor-default"
               >
                 {dept.name} ({dept.code})
-              </span>
+              </motion.span>
             ))}
           </div>
         </div>
