@@ -181,30 +181,30 @@ export const citiesData: CityData[] = [
   {
     name: "Sallanches",
     slug: "sallanches",
-    department: "", // À compléter si nécessaire
-    departmentCode: "",
+    department: "Haute-Savoie",
+    departmentCode: "74",
     region: "Auvergne-Rhône-Alpes",
     regionSlug: "auvergne-rhone-alpes",
     population: "17 319",
     description: "Expert en sécurité à Sallanches. HD Connect installe et maintient vos systèmes de vidéosurveillance, alarmes et contrôle d'accès. Intervention rapide à Sallanches et ses environs.",
-    nearbyTowns: ["Saint-Gervais-les-Bains", "Chamonix-Mont-Blanc"]
+    nearbyTowns: ["Saint-Gervais-les-Bains", "Chamonix-Mont-Blanc", "Passy", "Megève", "Combloux", "Domancy", "Cordon"]
   },
   {
     name: "Rumilly",
     slug: "rumilly",
-    department: "", // À compléter si nécessaire
-    departmentCode: "",
+    department: "Haute-Savoie",
+    departmentCode: "74",
     region: "Auvergne-Rhône-Alpes",
     regionSlug: "auvergne-rhone-alpes",
     population: "16 442",
     description: "Expert en sécurité à Rumilly. HD Connect installe et maintient vos systèmes de vidéosurveillance, alarmes et contrôle d'accès. Intervention rapide à Rumilly et ses environs.",
-    nearbyTowns: []
+    nearbyTowns: ["Alby-sur-Chéran", "Sales", "Marigny-Saint-Marcel", "Lovagny", "Sillingy", "Annecy", "Seyssel", "Frangy"]
   },
   {
     name: "Saint-Julien-en-Genevois",
     slug: "saint-julien-en-genevois",
-    department: "", // À compléter si nécessaire
-    departmentCode: "",
+    department: "Haute-Savoie",
+    departmentCode: "74",
     region: "Auvergne-Rhône-Alpes",
     regionSlug: "auvergne-rhone-alpes",
     population: "16 222",
