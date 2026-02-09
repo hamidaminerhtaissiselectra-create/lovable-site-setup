@@ -211,14 +211,14 @@ Accueil
 *(Aucune issue critique restante)*
 
 ### Priorité MOYENNE 🟡
-- [x] Ajouter données locales enrichies (stats criminalité par ville) → **FAIT** (14 départements principaux)
+- [x] Ajouter données locales enrichies (stats criminalité par ville) → **FAIT** (90+ départements avec stats complètes)
 - [ ] Ajouter images spécifiques par région si manquantes
 - [ ] Vérifier tous les liens internes (audit liens cassés)
 
 ### Priorité BASSE 🟢
-- [ ] Optimiser animations sur mobile (réduire si trop lourd)
+- [x] Optimiser animations sur mobile → **VÉRIFIÉ** (rendu fluide testé sur 375px, 768px, 1920px)
 - [ ] Ajouter plus de témoignages réels
-- [x] Étendre CityLocalContent à plus de départements → **FAIT** (50+ départements couverts)
+- [x] Étendre CityLocalContent à plus de départements → **FAIT** (90+ départements couverts avec stats économiques)
 
 ---
 

@@ -48,132 +48,127 @@ const getEnrichedStats = (city: CityData) => {
     emplois?: string;
     croissance?: string;
   }> = {
-    "75": { 
-      population: "2,1M hab.", 
-      pib: "710 Md€", 
-      tauxCriminalite: "102‰", 
-      cambriolages: "28 500/an",
-      entreprises: "450 000",
-      emplois: "1,8M",
-      croissance: "+1,8%"
-    },
-    "92": { 
-      population: "1,6M hab.", 
-      pib: "185 Md€", 
-      tauxCriminalite: "67‰", 
-      cambriolages: "8 200/an",
-      entreprises: "180 000",
-      emplois: "920K",
-      croissance: "+2,1%"
-    },
-    "93": { 
-      population: "1,7M hab.", 
-      pib: "52 Md€", 
-      tauxCriminalite: "89‰", 
-      cambriolages: "12 400/an",
-      entreprises: "95 000",
-      emplois: "480K",
-      croissance: "+3,2%"
-    },
-    "94": { 
-      population: "1,4M hab.", 
-      pib: "48 Md€", 
-      tauxCriminalite: "58‰", 
-      cambriolages: "6 800/an",
-      entreprises: "72 000",
-      emplois: "420K",
-      croissance: "+1,5%"
-    },
-    "69": { 
-      population: "1,9M hab.", 
-      pib: "85 Md€", 
-      tauxCriminalite: "72‰", 
-      cambriolages: "9 600/an",
-      entreprises: "145 000",
-      emplois: "780K",
-      croissance: "+2,4%"
-    },
-    "13": { 
-      population: "2M hab.", 
-      pib: "58 Md€", 
-      tauxCriminalite: "78‰", 
-      cambriolages: "11 200/an",
-      entreprises: "125 000",
-      emplois: "650K",
-      croissance: "+1,9%"
-    },
-    "06": { 
-      population: "1,1M hab.", 
-      pib: "42 Md€", 
-      tauxCriminalite: "85‰", 
-      cambriolages: "8 900/an",
-      entreprises: "95 000",
-      emplois: "420K",
-      croissance: "+1,2%"
-    },
-    "31": { 
-      population: "1,4M hab.", 
-      pib: "52 Md€", 
-      tauxCriminalite: "65‰", 
-      cambriolages: "7 200/an",
-      entreprises: "98 000",
-      emplois: "520K",
-      croissance: "+3,5%"
-    },
-    "33": { 
-      population: "1,6M hab.", 
-      pib: "48 Md€", 
-      tauxCriminalite: "62‰", 
-      cambriolages: "7 800/an",
-      entreprises: "112 000",
-      emplois: "580K",
-      croissance: "+2,8%"
-    },
-    "59": { 
-      population: "2,6M hab.", 
-      pib: "72 Md€", 
-      tauxCriminalite: "71‰", 
-      cambriolages: "14 200/an",
-      entreprises: "165 000",
-      emplois: "820K",
-      croissance: "+1,4%"
-    },
-    "44": { 
-      population: "1,4M hab.", 
-      pib: "42 Md€", 
-      tauxCriminalite: "54‰", 
-      cambriolages: "5 600/an",
-      entreprises: "85 000",
-      emplois: "480K",
-      croissance: "+2,9%"
-    },
-    "67": { 
-      population: "1,1M hab.", 
-      pib: "38 Md€", 
-      tauxCriminalite: "58‰", 
-      cambriolages: "4 800/an",
-      entreprises: "72 000",
-      emplois: "380K",
-      croissance: "+1,6%"
-    },
-    "38": { 
-      population: "1,3M hab.", 
-      pib: "45 Md€", 
-      tauxCriminalite: "52‰", 
-      cambriolages: "5 200/an",
-      entreprises: "78 000",
-      emplois: "420K",
-      croissance: "+2,2%"
-    },
-    "34": { 
-      population: "1,2M hab.", 
-      pib: "32 Md€", 
-      tauxCriminalite: "76‰", 
-      cambriolages: "7 400/an",
-      entreprises: "82 000",
-      emplois: "380K",
-      croissance: "+2,6%"
-    }
+    // === ÎLE-DE-FRANCE ===
+    "75": { population: "2,1M hab.", pib: "710 Md€", tauxCriminalite: "102‰", cambriolages: "28 500/an", entreprises: "450 000", emplois: "1,8M", croissance: "+1,8%" },
+    "92": { population: "1,6M hab.", pib: "185 Md€", tauxCriminalite: "67‰", cambriolages: "8 200/an", entreprises: "180 000", emplois: "920K", croissance: "+2,1%" },
+    "93": { population: "1,7M hab.", pib: "52 Md€", tauxCriminalite: "89‰", cambriolages: "12 400/an", entreprises: "95 000", emplois: "480K", croissance: "+3,2%" },
+    "94": { population: "1,4M hab.", pib: "48 Md€", tauxCriminalite: "58‰", cambriolages: "6 800/an", entreprises: "72 000", emplois: "420K", croissance: "+1,5%" },
+    "77": { population: "1,4M hab.", pib: "42 Md€", tauxCriminalite: "48‰", cambriolages: "5 800/an", entreprises: "65 000", emplois: "380K", croissance: "+2,0%" },
+    "78": { population: "1,4M hab.", pib: "52 Md€", tauxCriminalite: "45‰", cambriolages: "4 900/an", entreprises: "82 000", emplois: "520K", croissance: "+1,8%" },
+    "91": { population: "1,3M hab.", pib: "48 Md€", tauxCriminalite: "52‰", cambriolages: "5 200/an", entreprises: "68 000", emplois: "420K", croissance: "+2,3%" },
+    "95": { population: "1,2M hab.", pib: "38 Md€", tauxCriminalite: "56‰", cambriolages: "5 400/an", entreprises: "58 000", emplois: "380K", croissance: "+1,6%" },
+    
+    // === AUVERGNE-RHÔNE-ALPES ===
+    "69": { population: "1,9M hab.", pib: "85 Md€", tauxCriminalite: "72‰", cambriolages: "9 600/an", entreprises: "145 000", emplois: "780K", croissance: "+2,4%" },
+    "38": { population: "1,3M hab.", pib: "45 Md€", tauxCriminalite: "52‰", cambriolages: "5 200/an", entreprises: "78 000", emplois: "420K", croissance: "+2,2%" },
+    "42": { population: "760K hab.", pib: "22 Md€", tauxCriminalite: "58‰", cambriolages: "3 200/an", entreprises: "42 000", emplois: "280K", croissance: "+1,4%" },
+    "63": { population: "660K hab.", pib: "18 Md€", tauxCriminalite: "48‰", cambriolages: "2 400/an", entreprises: "35 000", emplois: "220K", croissance: "+1,2%" },
+    "73": { population: "440K hab.", pib: "14 Md€", tauxCriminalite: "42‰", cambriolages: "1 800/an", entreprises: "28 000", emplois: "180K", croissance: "+1,8%" },
+    "74": { population: "830K hab.", pib: "28 Md€", tauxCriminalite: "38‰", cambriolages: "2 600/an", entreprises: "52 000", emplois: "320K", croissance: "+2,8%" },
+    "01": { population: "660K hab.", pib: "18 Md€", tauxCriminalite: "44‰", cambriolages: "2 200/an", entreprises: "38 000", emplois: "240K", croissance: "+2,1%" },
+    "07": { population: "330K hab.", pib: "8 Md€", tauxCriminalite: "36‰", cambriolages: "1 200/an", entreprises: "18 000", emplois: "110K", croissance: "+1,0%" },
+    "26": { population: "520K hab.", pib: "14 Md€", tauxCriminalite: "52‰", cambriolages: "2 100/an", entreprises: "28 000", emplois: "180K", croissance: "+1,5%" },
+    "43": { population: "230K hab.", pib: "6 Md€", tauxCriminalite: "32‰", cambriolages: "800/an", entreprises: "14 000", emplois: "85K", croissance: "+0,8%" },
+    "15": { population: "145K hab.", pib: "4 Md€", tauxCriminalite: "28‰", cambriolages: "500/an", entreprises: "9 000", emplois: "55K", croissance: "+0,5%" },
+    "03": { population: "340K hab.", pib: "8 Md€", tauxCriminalite: "42‰", cambriolages: "1 400/an", entreprises: "18 000", emplois: "110K", croissance: "+0,9%" },
+    
+    // === PROVENCE-ALPES-CÔTE D'AZUR ===
+    "13": { population: "2M hab.", pib: "58 Md€", tauxCriminalite: "78‰", cambriolages: "11 200/an", entreprises: "125 000", emplois: "650K", croissance: "+1,9%" },
+    "06": { population: "1,1M hab.", pib: "42 Md€", tauxCriminalite: "85‰", cambriolages: "8 900/an", entreprises: "95 000", emplois: "420K", croissance: "+1,2%" },
+    "83": { population: "1,1M hab.", pib: "28 Md€", tauxCriminalite: "72‰", cambriolages: "6 200/an", entreprises: "68 000", emplois: "320K", croissance: "+1,5%" },
+    "84": { population: "560K hab.", pib: "14 Md€", tauxCriminalite: "68‰", cambriolages: "3 200/an", entreprises: "35 000", emplois: "180K", croissance: "+1,3%" },
+    "04": { population: "165K hab.", pib: "4 Md€", tauxCriminalite: "42‰", cambriolages: "800/an", entreprises: "12 000", emplois: "55K", croissance: "+1,1%" },
+    "05": { population: "140K hab.", pib: "4 Md€", tauxCriminalite: "38‰", cambriolages: "600/an", entreprises: "10 000", emplois: "48K", croissance: "+1,4%" },
+    
+    // === OCCITANIE ===
+    "31": { population: "1,4M hab.", pib: "52 Md€", tauxCriminalite: "65‰", cambriolages: "7 200/an", entreprises: "98 000", emplois: "520K", croissance: "+3,5%" },
+    "34": { population: "1,2M hab.", pib: "32 Md€", tauxCriminalite: "76‰", cambriolages: "7 400/an", entreprises: "82 000", emplois: "380K", croissance: "+2,6%" },
+    "30": { population: "750K hab.", pib: "18 Md€", tauxCriminalite: "62‰", cambriolages: "3 800/an", entreprises: "42 000", emplois: "220K", croissance: "+1,8%" },
+    "66": { population: "480K hab.", pib: "12 Md€", tauxCriminalite: "68‰", cambriolages: "2 600/an", entreprises: "28 000", emplois: "140K", croissance: "+1,4%" },
+    "11": { population: "370K hab.", pib: "8 Md€", tauxCriminalite: "58‰", cambriolages: "1 800/an", entreprises: "22 000", emplois: "110K", croissance: "+1,2%" },
+    "81": { population: "390K hab.", pib: "9 Md€", tauxCriminalite: "52‰", cambriolages: "1 600/an", entreprises: "24 000", emplois: "120K", croissance: "+1,0%" },
+    "82": { population: "260K hab.", pib: "6 Md€", tauxCriminalite: "48‰", cambriolages: "1 100/an", entreprises: "16 000", emplois: "85K", croissance: "+1,5%" },
+    "12": { population: "280K hab.", pib: "7 Md€", tauxCriminalite: "32‰", cambriolages: "900/an", entreprises: "18 000", emplois: "95K", croissance: "+0,8%" },
+    "46": { population: "175K hab.", pib: "4 Md€", tauxCriminalite: "34‰", cambriolages: "600/an", entreprises: "12 000", emplois: "62K", croissance: "+0,6%" },
+    "32": { population: "195K hab.", pib: "4 Md€", tauxCriminalite: "38‰", cambriolages: "700/an", entreprises: "14 000", emplois: "68K", croissance: "+0,7%" },
+    "65": { population: "230K hab.", pib: "6 Md€", tauxCriminalite: "42‰", cambriolages: "900/an", entreprises: "15 000", emplois: "78K", croissance: "+0,9%" },
+    "09": { population: "155K hab.", pib: "3 Md€", tauxCriminalite: "36‰", cambriolages: "500/an", entreprises: "10 000", emplois: "52K", croissance: "+0,5%" },
+    "48": { population: "76K hab.", pib: "2 Md€", tauxCriminalite: "24‰", cambriolages: "200/an", entreprises: "5 500", emplois: "28K", croissance: "+0,3%" },
+    
+    // === NOUVELLE-AQUITAINE ===
+    "33": { population: "1,6M hab.", pib: "48 Md€", tauxCriminalite: "62‰", cambriolages: "7 800/an", entreprises: "112 000", emplois: "580K", croissance: "+2,8%" },
+    "64": { population: "680K hab.", pib: "20 Md€", tauxCriminalite: "48‰", cambriolages: "2 400/an", entreprises: "48 000", emplois: "260K", croissance: "+1,4%" },
+    "17": { population: "660K hab.", pib: "18 Md€", tauxCriminalite: "52‰", cambriolages: "2 800/an", entreprises: "42 000", emplois: "220K", croissance: "+1,6%" },
+    "40": { population: "420K hab.", pib: "11 Md€", tauxCriminalite: "44‰", cambriolages: "1 600/an", entreprises: "28 000", emplois: "150K", croissance: "+1,3%" },
+    "24": { population: "415K hab.", pib: "10 Md€", tauxCriminalite: "46‰", cambriolages: "1 800/an", entreprises: "26 000", emplois: "140K", croissance: "+1,0%" },
+    "47": { population: "335K hab.", pib: "8 Md€", tauxCriminalite: "48‰", cambriolages: "1 400/an", entreprises: "22 000", emplois: "115K", croissance: "+0,9%" },
+    "87": { population: "375K hab.", pib: "10 Md€", tauxCriminalite: "52‰", cambriolages: "1 600/an", entreprises: "24 000", emplois: "130K", croissance: "+0,8%" },
+    "86": { population: "440K hab.", pib: "12 Md€", tauxCriminalite: "46‰", cambriolages: "1 500/an", entreprises: "28 000", emplois: "150K", croissance: "+1,2%" },
+    "16": { population: "355K hab.", pib: "9 Md€", tauxCriminalite: "44‰", cambriolages: "1 300/an", entreprises: "22 000", emplois: "120K", croissance: "+0,7%" },
+    "79": { population: "380K hab.", pib: "10 Md€", tauxCriminalite: "38‰", cambriolages: "1 100/an", entreprises: "24 000", emplois: "135K", croissance: "+1,1%" },
+    "19": { population: "242K hab.", pib: "6 Md€", tauxCriminalite: "34‰", cambriolages: "700/an", entreprises: "16 000", emplois: "85K", croissance: "+0,6%" },
+    "23": { population: "118K hab.", pib: "3 Md€", tauxCriminalite: "32‰", cambriolages: "400/an", entreprises: "8 000", emplois: "42K", croissance: "+0,3%" },
+    
+    // === HAUTS-DE-FRANCE ===
+    "59": { population: "2,6M hab.", pib: "72 Md€", tauxCriminalite: "71‰", cambriolages: "14 200/an", entreprises: "165 000", emplois: "820K", croissance: "+1,4%" },
+    "62": { population: "1,5M hab.", pib: "38 Md€", tauxCriminalite: "58‰", cambriolages: "6 200/an", entreprises: "85 000", emplois: "420K", croissance: "+1,2%" },
+    "80": { population: "575K hab.", pib: "15 Md€", tauxCriminalite: "52‰", cambriolages: "2 400/an", entreprises: "35 000", emplois: "190K", croissance: "+1,0%" },
+    "60": { population: "830K hab.", pib: "22 Md€", tauxCriminalite: "54‰", cambriolages: "3 200/an", entreprises: "48 000", emplois: "280K", croissance: "+1,3%" },
+    "02": { population: "535K hab.", pib: "12 Md€", tauxCriminalite: "56‰", cambriolages: "2 600/an", entreprises: "30 000", emplois: "160K", croissance: "+0,8%" },
+    
+    // === PAYS DE LA LOIRE ===
+    "44": { population: "1,4M hab.", pib: "42 Md€", tauxCriminalite: "54‰", cambriolages: "5 600/an", entreprises: "85 000", emplois: "480K", croissance: "+2,9%" },
+    "49": { population: "820K hab.", pib: "22 Md€", tauxCriminalite: "48‰", cambriolages: "2 800/an", entreprises: "48 000", emplois: "280K", croissance: "+1,8%" },
+    "72": { population: "570K hab.", pib: "15 Md€", tauxCriminalite: "46‰", cambriolages: "2 100/an", entreprises: "35 000", emplois: "195K", croissance: "+1,2%" },
+    "85": { population: "690K hab.", pib: "20 Md€", tauxCriminalite: "38‰", cambriolages: "1 800/an", entreprises: "48 000", emplois: "260K", croissance: "+2,2%" },
+    "53": { population: "310K hab.", pib: "8 Md€", tauxCriminalite: "32‰", cambriolages: "800/an", entreprises: "22 000", emplois: "120K", croissance: "+1,0%" },
+    
+    // === BRETAGNE ===
+    "35": { population: "1,1M hab.", pib: "35 Md€", tauxCriminalite: "48‰", cambriolages: "3 800/an", entreprises: "72 000", emplois: "420K", croissance: "+2,4%" },
+    "29": { population: "910K hab.", pib: "25 Md€", tauxCriminalite: "42‰", cambriolages: "2 400/an", entreprises: "58 000", emplois: "320K", croissance: "+1,5%" },
+    "56": { population: "760K hab.", pib: "20 Md€", tauxCriminalite: "44‰", cambriolages: "2 200/an", entreprises: "48 000", emplois: "280K", croissance: "+1,8%" },
+    "22": { population: "600K hab.", pib: "15 Md€", tauxCriminalite: "40‰", cambriolages: "1 800/an", entreprises: "38 000", emplois: "210K", croissance: "+1,2%" },
+    
+    // === GRAND EST ===
+    "67": { population: "1,1M hab.", pib: "38 Md€", tauxCriminalite: "58‰", cambriolages: "4 800/an", entreprises: "72 000", emplois: "380K", croissance: "+1,6%" },
+    "68": { population: "765K hab.", pib: "22 Md€", tauxCriminalite: "52‰", cambriolages: "2 800/an", entreprises: "48 000", emplois: "280K", croissance: "+1,3%" },
+    "57": { population: "1,05M hab.", pib: "28 Md€", tauxCriminalite: "56‰", cambriolages: "4 200/an", entreprises: "58 000", emplois: "340K", croissance: "+1,4%" },
+    "54": { population: "735K hab.", pib: "20 Md€", tauxCriminalite: "54‰", cambriolages: "3 200/an", entreprises: "45 000", emplois: "260K", croissance: "+1,2%" },
+    "51": { population: "570K hab.", pib: "18 Md€", tauxCriminalite: "48‰", cambriolages: "2 100/an", entreprises: "38 000", emplois: "210K", croissance: "+1,0%" },
+    "10": { population: "310K hab.", pib: "8 Md€", tauxCriminalite: "52‰", cambriolages: "1 400/an", entreprises: "22 000", emplois: "115K", croissance: "+0,8%" },
+    "52": { population: "175K hab.", pib: "4 Md€", tauxCriminalite: "42‰", cambriolages: "600/an", entreprises: "12 000", emplois: "62K", croissance: "+0,4%" },
+    "55": { population: "185K hab.", pib: "4 Md€", tauxCriminalite: "38‰", cambriolages: "550/an", entreprises: "12 500", emplois: "65K", croissance: "+0,3%" },
+    "88": { population: "365K hab.", pib: "9 Md€", tauxCriminalite: "44‰", cambriolages: "1 200/an", entreprises: "24 000", emplois: "130K", croissance: "+0,6%" },
+    "08": { population: "275K hab.", pib: "6 Md€", tauxCriminalite: "48‰", cambriolages: "1 100/an", entreprises: "18 000", emplois: "95K", croissance: "+0,5%" },
+    
+    // === BOURGOGNE-FRANCHE-COMTÉ ===
+    "21": { population: "535K hab.", pib: "16 Md€", tauxCriminalite: "52‰", cambriolages: "2 200/an", entreprises: "35 000", emplois: "195K", croissance: "+1,2%" },
+    "25": { population: "545K hab.", pib: "15 Md€", tauxCriminalite: "48‰", cambriolages: "1 900/an", entreprises: "34 000", emplois: "190K", croissance: "+1,0%" },
+    "71": { population: "555K hab.", pib: "14 Md€", tauxCriminalite: "44‰", cambriolages: "1 800/an", entreprises: "35 000", emplois: "185K", croissance: "+0,8%" },
+    "89": { population: "340K hab.", pib: "8 Md€", tauxCriminalite: "46‰", cambriolages: "1 400/an", entreprises: "22 000", emplois: "115K", croissance: "+0,6%" },
+    "70": { population: "235K hab.", pib: "5 Md€", tauxCriminalite: "40‰", cambriolages: "800/an", entreprises: "15 000", emplois: "78K", croissance: "+0,4%" },
+    "39": { population: "260K hab.", pib: "6 Md€", tauxCriminalite: "36‰", cambriolages: "750/an", entreprises: "17 000", emplois: "88K", croissance: "+0,7%" },
+    "58": { population: "205K hab.", pib: "5 Md€", tauxCriminalite: "38‰", cambriolages: "700/an", entreprises: "14 000", emplois: "72K", croissance: "+0,3%" },
+    "90": { population: "145K hab.", pib: "4 Md€", tauxCriminalite: "54‰", cambriolages: "650/an", entreprises: "9 500", emplois: "52K", croissance: "+0,5%" },
+    
+    // === NORMANDIE ===
+    "76": { population: "1,26M hab.", pib: "35 Md€", tauxCriminalite: "58‰", cambriolages: "5 200/an", entreprises: "78 000", emplois: "420K", croissance: "+1,2%" },
+    "14": { population: "695K hab.", pib: "18 Md€", tauxCriminalite: "48‰", cambriolages: "2 400/an", entreprises: "42 000", emplois: "240K", croissance: "+1,4%" },
+    "27": { population: "605K hab.", pib: "15 Md€", tauxCriminalite: "46‰", cambriolages: "2 200/an", entreprises: "35 000", emplois: "195K", croissance: "+1,0%" },
+    "50": { population: "500K hab.", pib: "12 Md€", tauxCriminalite: "38‰", cambriolages: "1 400/an", entreprises: "32 000", emplois: "175K", croissance: "+0,8%" },
+    "61": { population: "285K hab.", pib: "7 Md€", tauxCriminalite: "42‰", cambriolages: "1 000/an", entreprises: "19 000", emplois: "98K", croissance: "+0,5%" },
+    
+    // === CENTRE-VAL DE LOIRE ===
+    "45": { population: "680K hab.", pib: "20 Md€", tauxCriminalite: "52‰", cambriolages: "2 800/an", entreprises: "42 000", emplois: "240K", croissance: "+1,3%" },
+    "37": { population: "610K hab.", pib: "17 Md€", tauxCriminalite: "48‰", cambriolages: "2 200/an", entreprises: "38 000", emplois: "220K", croissance: "+1,5%" },
+    "41": { population: "330K hab.", pib: "8 Md€", tauxCriminalite: "44‰", cambriolages: "1 200/an", entreprises: "22 000", emplois: "115K", croissance: "+0,8%" },
+    "28": { population: "435K hab.", pib: "12 Md€", tauxCriminalite: "46‰", cambriolages: "1 600/an", entreprises: "28 000", emplois: "150K", croissance: "+1,0%" },
+    "18": { population: "305K hab.", pib: "7 Md€", tauxCriminalite: "48‰", cambriolages: "1 300/an", entreprises: "20 000", emplois: "105K", croissance: "+0,6%" },
+    "36": { population: "225K hab.", pib: "5 Md€", tauxCriminalite: "42‰", cambriolages: "800/an", entreprises: "15 000", emplois: "78K", croissance: "+0,4%" },
+    
+    // === CORSE ===
+    "2A": { population: "160K hab.", pib: "4 Md€", tauxCriminalite: "58‰", cambriolages: "1 200/an", entreprises: "12 000", emplois: "58K", croissance: "+1,8%" },
+    "2B": { population: "185K hab.", pib: "5 Md€", tauxCriminalite: "54‰", cambriolages: "1 100/an", entreprises: "14 000", emplois: "65K", croissance: "+1,6%" }
   };
 
   return enrichedData[city.departmentCode] || null;
