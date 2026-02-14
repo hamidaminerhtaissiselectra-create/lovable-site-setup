@@ -3,6 +3,7 @@ import { MapPin, Phone, ArrowRight, Shield, Award, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Breadcrumbs from "@/components/SEO/Breadcrumbs";
 import { CityData } from "@/data/citiesData";
+import { getCityH1, getCityHeroDescription, getCityHeroStats, getCityBadge } from "@/data/cityContentGenerator";
 import { usePhoneCall } from "@/hooks/usePhoneCall";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import { motion } from "framer-motion";
@@ -17,12 +18,11 @@ const CityHeroParallax = ({ city, breadcrumbItems }: CityHeroParallaxProps) => {
   const { scrollToSection } = useSmoothScroll();
   const { ref: parallaxRef, offset } = useParallax({ speed: 0.3, direction: 'up' });
 
-  // Stats spécifiques à la ville
-  const stats = [
-    { icon: Shield, label: "Interventions", value: "500+" },
-    { icon: Award, label: "Clients satisfaits", value: "98%" },
-    { icon: Clock, label: "Intervention", value: "< 4h" },
-  ];
+  // Contenu ultra-personnalisé par ville
+  const heroTitle = getCityH1(city);
+  const heroDescription = getCityHeroDescription(city);
+  const stats = getCityHeroStats(city);
+  const heroBadge = getCityBadge(city);
 
   return (
     <section 
@@ -79,7 +79,7 @@ const CityHeroParallax = ({ city, breadcrumbItems }: CityHeroParallaxProps) => {
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 text-primary font-semibold mb-6 border border-primary/20 backdrop-blur-sm"
           >
             <MapPin className="w-4 h-4 animate-pulse" />
-            <span>{city.department} ({city.departmentCode}) • {city.region}</span>
+            <span>{heroBadge}</span>
           </motion.div>
           
           {/* Titre principal avec animation */}
@@ -89,18 +89,25 @@ const CityHeroParallax = ({ city, breadcrumbItems }: CityHeroParallaxProps) => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-6 leading-tight"
           >
-            Expert Sécurité à{" "}
-            <span className="relative">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-                {city.name}
-              </span>
-              <motion.span 
-                className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent rounded-full"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-              />
-            </span>
+            {heroTitle.includes(city.name) ? (
+              <>
+                {heroTitle.split(city.name)[0]}
+                <span className="relative">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                    {city.name}
+                  </span>
+                  <motion.span 
+                    className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent rounded-full"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 0.8, delay: 0.5 }}
+                  />
+                </span>
+                {heroTitle.split(city.name)[1]}
+              </>
+            ) : (
+              heroTitle
+            )}
           </motion.h1>
           
           {/* Description avec animation */}
@@ -110,7 +117,7 @@ const CityHeroParallax = ({ city, breadcrumbItems }: CityHeroParallaxProps) => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed"
           >
-            {city.description}
+            {heroDescription}
           </motion.p>
 
           {/* Stats rapides */}
@@ -128,7 +135,7 @@ const CityHeroParallax = ({ city, breadcrumbItems }: CityHeroParallaxProps) => {
                 transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
                 className="flex items-center gap-2 px-4 py-2 bg-card/50 backdrop-blur-sm rounded-xl border border-border/50"
               >
-                <stat.icon className="w-5 h-5 text-primary" />
+                <Shield className="w-5 h-5 text-primary" />
                 <span className="font-bold text-foreground">{stat.value}</span>
                 <span className="text-muted-foreground text-sm">{stat.label}</span>
               </motion.div>

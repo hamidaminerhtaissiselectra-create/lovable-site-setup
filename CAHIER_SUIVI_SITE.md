@@ -260,14 +260,19 @@ Suite au document « Optimisation_SEO_Pages_Locales_Ajustees.docx », les correc
 | Fallback coordonnées par département | `cityGeoData.ts` | ✅ Créé |
 | Contenu unique par département (90+) | `CityLocalContent.tsx` | ✅ Existant |
 | Témoignages pseudo-uniques par ville | `CityLocalContent.tsx` | ✅ Existant |
-| FAQ locale 6 questions | `CityServicePage.tsx` | ✅ Existant |
+| FAQ locale 6 questions personnalisées | `cityContentGenerator.ts` | ✅ Refactorisé |
+| **H1 unique par ville** (catégorisé) | `cityContentGenerator.ts` | ✅ **Nouveau** |
+| **Description hero unique par ville** | `cityContentGenerator.ts` | ✅ **Nouveau** |
+| **Stats hero adaptées (pop/catégorie)** | `cityContentGenerator.ts` | ✅ **Nouveau** |
+| **Badge hero personnalisé** | `cityContentGenerator.ts` | ✅ **Nouveau** |
+| **Témoignages ultra-personnalisés** | `cityContentGenerator.ts` | ✅ **Nouveau** |
+| **FAQ enrichie avec données locales** | `cityContentGenerator.ts` | ✅ **Nouveau** |
 
 ### Ce qui reste à faire (optionnel)
 
 | Tâche | Priorité | Effort |
 |-------|----------|--------|
 | Pages statiques pré-rendues (SSG) | 🟡 Moyen | Nécessite framework SSG |
-| Contenu texte 100% unique par ville (pas par département) | 🟡 Moyen | Rédaction manuelle recommandée |
 | Photos locales réelles par ville | 🟢 Faible | Collecte terrain |
 | Avis clients vérifiés (Google Reviews API) | 🟡 Moyen | Nécessite API externe |
 
