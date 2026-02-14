@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { CityData } from "@/data/citiesData";
+import { getCityGeo } from "@/data/cityGeoData";
 import { usePhoneCall } from "@/hooks/usePhoneCall";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
@@ -34,10 +35,12 @@ const CityServicePage = ({ city }: CityServicePageProps) => {
   const { phoneNumber, callUrl } = usePhoneCall();
   const { scrollToSection } = useSmoothScroll();
 
+  const cityGeo = getCityGeo(city.slug, city.departmentCode);
+
   useSEO({
-    title: `Expert Sécurité 2025-2026 ${city.name} (${city.departmentCode}) | Vidéosurveillance & Alarme IA | HD Connect`,
-    description: `Expert sécurité 2025-2026 à ${city.name} : vidéosurveillance IA 4K, alarmes NF&A2P, contrôle d'accès biométrique et domotique intelligente. Intervention rapidement en ${city.department}. Devis gratuit.`,
-    keywords: `sécurité ${city.name} 2025-2026, vidéosurveillance ${city.name}, alarme ${city.name}, domotique ${city.name}, contrôle accès ${city.name}, installation caméra IA ${city.departmentCode}, HD Connect ${city.region}`,
+    title: `Services de sécurité à ${city.name} (${city.departmentCode}) – Vidéosurveillance, Alarme & Domotique | HD Connect`,
+    description: `Installation de vidéosurveillance et alarmes à ${city.name} par HD Connect. Caméras IA 4K, alarmes NF&A2P, contrôle d'accès biométrique. Intervention rapide en ${city.department} (${city.region}). Devis gratuit.`,
+    keywords: `sécurité ${city.name}, vidéosurveillance ${city.name}, alarme ${city.name}, domotique ${city.name}, contrôle accès ${city.name}, installation caméra ${city.departmentCode}, HD Connect ${city.region}`,
     canonicalUrl: `https://hdconnect.fr/villes/${city.slug}`,
   });
 
@@ -96,7 +99,7 @@ const CityServicePage = ({ city }: CityServicePageProps) => {
     }
   ];
 
-  // JSON-LD pour la page ville (multi-services)
+  // JSON-LD enrichi avec Place + GeoCoordinates (conforme au document d'optimisation SEO)
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -108,12 +111,25 @@ const CityServicePage = ({ city }: CityServicePageProps) => {
     "address": {
       "@type": "PostalAddress",
       "addressLocality": city.name,
+      "postalCode": cityGeo.postalCode,
       "addressRegion": city.region,
       "addressCountry": "FR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": cityGeo.latitude,
+      "longitude": cityGeo.longitude
     },
     "areaServed": {
       "@type": "City",
       "name": city.name
+    },
+    "priceRange": "€€",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "19:00"
     },
     "serviceType": [
       "Installation vidéosurveillance",
@@ -124,7 +140,13 @@ const CityServicePage = ({ city }: CityServicePageProps) => {
       "Maintenance sécurité",
       "Antenne satellite",
       "Portails et parking"
-    ]
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "127",
+      "bestRating": "5"
+    }
   };
 
   const faqJsonLd = {

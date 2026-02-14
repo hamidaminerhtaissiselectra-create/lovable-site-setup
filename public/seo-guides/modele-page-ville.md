@@ -114,7 +114,7 @@ Une page ville est **complète** si :
 
 ### Composants conformes au modèle :
 - ✅ `CityHeroParallax.tsx` : H1 dynamique, badge département, stats, CTAs
-- ✅ `CityLocalContent.tsx` : Contenu unique par code département (16 départements couverts)
+- ✅ `CityLocalContent.tsx` : Contenu unique par code département (90+ départements couverts)
 - ✅ `CityServicesGrid.tsx` : 8 services avec liens vers pages détail ville+service
 - ✅ `CityCoverageSection.tsx` : Affiche TOUS les nearbyTowns + liens maillage région
 - ✅ `MiniTestimonials.tsx` : Témoignages pseudo-uniques par ville
@@ -124,6 +124,14 @@ Une page ville est **complète** si :
 ### Données enrichies :
 - ✅ `citiesData.ts` : nearbyTowns alignés sur fichier Excel (12 communes/ville)
 - ✅ `seoTrackingData.ts` : Suivi statut toutes villes Pilier + Secondaires
+- ✅ `cityGeoData.ts` : Coordonnées GPS (lat/lng) pour 180+ villes + fallback département
+
+### Optimisation SEO locale (14/02/2026) :
+- ✅ JSON-LD avec `GeoCoordinates` (latitude, longitude) pour chaque ville
+- ✅ Schema `Place` + `PostalAddress` avec code postal
+- ✅ `AggregateRating` et `OpeningHoursSpecification` dans le schema
+- ✅ Meta title unique sans date, avec nom ville + département
+- ✅ Meta description enrichie mentionnant la région
 
 ---
 
@@ -146,4 +154,7 @@ Une page ville est **complète** si :
 [ ] CTA affiche numéro téléphone + nom ville
 [ ] Liens vers autres villes de la région
 [ ] Breadcrumb : Accueil > Région > Ville
+[ ] JSON-LD contient GeoCoordinates (lat/lng)
+[ ] JSON-LD contient PostalAddress avec code postal
+[ ] Meta title < 60 caractères avec ville + département
 ```
