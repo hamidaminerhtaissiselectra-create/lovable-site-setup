@@ -23,6 +23,7 @@ import {
 import { Link } from "react-router-dom";
 import { CityData } from "@/data/citiesData";
 import { getCityGeo } from "@/data/cityGeoData";
+import { getCityFAQ } from "@/data/cityContentGenerator";
 import { usePhoneCall } from "@/hooks/usePhoneCall";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
@@ -72,32 +73,8 @@ const CityServicePage = ({ city }: CityServicePageProps) => {
     }
   ];
 
-  const faqItems = [
-    {
-      question: `Quels services HD Connect propose-t-il à ${city.name} ?`,
-      answer: `HD Connect propose l'ensemble de ses services à ${city.name} : vidéosurveillance HD/4K, alarmes certifiées NF&A2P, contrôle d'accès (badges, biométrie), domotique intelligente, réseau et câblage, maintenance 24/7, antennes et satellites, ainsi que motorisation de portails et parkings.`
-    },
-    {
-      question: `HD Connect intervient-il rapidement à ${city.name} ?`,
-      answer: `Oui, HD Connect intervient régulièrement à ${city.name} et dans l'ensemble du ${city.department}. Nos délais d'intervention sont de 24 à 48 heures pour les installations programmées. Pour les urgences, nous pouvons intervenir le jour même selon les disponibilités.`
-    },
-    {
-      question: `Les frais de déplacement sont-ils inclus pour ${city.name} ?`,
-      answer: `Les frais de déplacement pour ${city.name} sont généralement inclus dans nos devis. Pour les projets importants, le déplacement est toujours gratuit. Nous vous communiquons un devis transparent avant toute intervention.`
-    },
-    {
-      question: `Quels quartiers de ${city.name} couvrez-vous ?`,
-      answer: `Nous intervenons dans tous les quartiers de ${city.name}${city.neighborhoods ? ` : ${city.neighborhoods.slice(0, 6).join(", ")}...` : "."} ainsi que dans les communes environnantes${city.nearbyTowns ? ` comme ${city.nearbyTowns.slice(0, 4).join(", ")}.` : "."}`
-    },
-    {
-      question: `Proposez-vous des contrats de maintenance à ${city.name} ?`,
-      answer: `Oui, nous proposons des contrats de maintenance annuels pour les clients de ${city.name}. Ces contrats incluent des visites préventives régulières, un support prioritaire et des tarifs préférentiels sur les interventions.`
-    },
-    {
-      question: `Peut-on louer du matériel de sécurité à ${city.name} ?`,
-      answer: `Oui, HD Connect propose la location de matériel de sécurité à ${city.name} pour vos événements, chantiers ou besoins temporaires : caméras mobiles, alarmes de chantier, contrôle d'accès événementiel. Contactez-nous pour un devis.`
-    }
-  ];
+  // FAQ ultra-personnalisée par ville
+  const faqItems = getCityFAQ(city);
 
   // JSON-LD enrichi avec Place + GeoCoordinates (conforme au document d'optimisation SEO)
   const jsonLd = {
