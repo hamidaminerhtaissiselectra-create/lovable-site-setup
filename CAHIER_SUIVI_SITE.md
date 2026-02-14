@@ -243,6 +243,34 @@ Le site est **techniquement solide** avec :
 - **90+ départements** avec données enrichies (population, PIB, criminalité)
 - Animations Framer Motion cohérentes sur toutes les pages locales
 
+### Optimisation SEO Pages Locales (14/02/2026)
+
+Suite au document « Optimisation_SEO_Pages_Locales_Ajustees.docx », les corrections suivantes ont été appliquées :
+
+| Correction | Fichier | Statut |
+|------------|---------|--------|
+| JSON-LD GeoCoordinates (lat/lng) | `CityServicePage.tsx` + `cityGeoData.ts` | ✅ Implémenté |
+| Schema Place avec code postal | `CityServicePage.tsx` | ✅ Implémenté |
+| Meta title unique par ville (sans date) | `CityServicePage.tsx` | ✅ Corrigé |
+| Meta description enrichie avec région | `CityServicePage.tsx` | ✅ Corrigé |
+| AggregateRating dans JSON-LD | `CityServicePage.tsx` | ✅ Ajouté |
+| OpeningHoursSpecification | `CityServicePage.tsx` | ✅ Ajouté |
+| PriceRange dans schema | `CityServicePage.tsx` | ✅ Ajouté |
+| Coordonnées 180+ villes principales | `cityGeoData.ts` | ✅ Créé |
+| Fallback coordonnées par département | `cityGeoData.ts` | ✅ Créé |
+| Contenu unique par département (90+) | `CityLocalContent.tsx` | ✅ Existant |
+| Témoignages pseudo-uniques par ville | `CityLocalContent.tsx` | ✅ Existant |
+| FAQ locale 6 questions | `CityServicePage.tsx` | ✅ Existant |
+
+### Ce qui reste à faire (optionnel)
+
+| Tâche | Priorité | Effort |
+|-------|----------|--------|
+| Pages statiques pré-rendues (SSG) | 🟡 Moyen | Nécessite framework SSG |
+| Contenu texte 100% unique par ville (pas par département) | 🟡 Moyen | Rédaction manuelle recommandée |
+| Photos locales réelles par ville | 🟢 Faible | Collecte terrain |
+| Avis clients vérifiés (Google Reviews API) | 🟡 Moyen | Nécessite API externe |
+
 ### Audit visuel complet (09/02/2026)
 | Page | Desktop | Mobile | Status |
 |------|---------|--------|--------|
@@ -252,12 +280,12 @@ Le site est **techniquement solide** avec :
 | Hub Zones d'intervention | ✅ | ✅ | Conforme |
 | Pages Régions (13) | ✅ | ✅ | Harmonisées avec parallax |
 | Pages Départements | ✅ | ✅ | Harmonisées avec parallax |
-| Pages Villes (~180) | ✅ | ✅ | Stats enrichies + animations |
+| Pages Villes (~180) | ✅ | ✅ | Stats enrichies + GeoCoordinates |
 | Blog | ✅ | ✅ | Conforme |
 | Articles Blog | ✅ | ✅ | Conforme |
 
-**Toutes les corrections ont été appliquées. Le site est prêt pour la production.**
+**Toutes les corrections SEO locales ont été appliquées. Le site est prêt pour la production.**
 
 ---
 
-*Dernière mise à jour : 09 Février 2026*
+*Dernière mise à jour : 14 Février 2026*
