@@ -5,12 +5,29 @@ import type { Database } from './types';
 const SUPABASE_URL = "https://emvmyrdxmpsoaykabszb.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVtdm15cmR4bXBzb2F5a2Fic3piIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMyMDY2ODEsImV4cCI6MjA3ODc4MjY4MX0.qghodPLxGDRZqJAhDGvN_MA4KrzEj7VgFHkX6zLnKtE";
 
+const memoryStorage: Record<string, string> = {};
+
+const createSafeStorage = () => {
+  try {
+    const test = '__storage_test__';
+    window.localStorage.setItem(test, test);
+    window.localStorage.removeItem(test);
+    return window.localStorage;
+  } catch {
+    return {
+      getItem: (key: string) => memoryStorage[key] || null,
+      setItem: (key: string, value: string) => { memoryStorage[key] = value; },
+      removeItem: (key: string) => { delete memoryStorage[key]; },
+    };
+  }
+};
+
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";
 
 export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
   auth: {
-    storage: localStorage,
+    storage: createSafeStorage(),
     persistSession: true,
     autoRefreshToken: true,
   }
