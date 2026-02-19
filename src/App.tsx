@@ -18,6 +18,9 @@ import CityServiceDetailPage from "./pages/villes/CityServiceDetailPage";
 import RegionPage from "./pages/regions/RegionPage";
 import DepartmentPage from "./pages/departments/DepartmentPage";
 import ArrondissementPage from "./pages/paris/ArrondissementPage";
+import Paris1erLouvre from "./pages/paris/Paris1erLouvre";
+import Paris2eBourse from "./pages/paris/Paris2eBourse";
+import Paris3eTemple from "./pages/paris/Paris3eTemple";
 import ParisPage from "./pages/paris/ParisPage";
 import LyonPage from "./pages/lyon/LyonPage";
 import LyonArrondissementPage from "./pages/lyon/LyonArrondissementPage";
@@ -79,6 +82,12 @@ const App = () => (
           <Route path="/villes/paris" element={<ParisPage />} />
           
           {/* Pages arrondissements Paris - Niveau 5 */}
+          {/* Pages arrondissements Paris dédiées */}
+          <Route path="/paris/paris-1er-louvre" element={<Paris1erLouvre />} />
+          <Route path="/paris/paris-2e-bourse" element={<Paris2eBourse />} />
+          <Route path="/paris/paris-3e-temple" element={<Paris3eTemple />} />
+          
+          {/* Pages arrondissements Paris - Template (autres) */}
           <Route path="/paris/:arrondissementSlug" element={<ArrondissementPage />} />
           
           {/* Page Lyon principale - Hub des arrondissements */}
